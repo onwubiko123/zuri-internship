@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html style="height: 100%; padding-bottom: 50px;">
+<head>
+	<title>Mobile App</title>
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+	<link rel="stylesheet" type="text/css" href="css/ionic.css">
+</head>
+<body style="height: 100%; overflow: auto">
+
+	<div class="bar bar-header bar-positive">
+        <button class="button icon-left ion-home"></button>
+	    <h1 class="title">Header</h1>
+        <a class="button icon-right ion-android-bicycle button-calm">Learn More</a>
+	</div>
+
+
+
+	<div class="content has-header padding">
+
+		<div style="height: 900px; width: 100%;">
+
+			<div class="list">
+
+			  <label class="item item-input item-stacked-label">
+			    <span class="input-label">Name</span>
+			    <input type="text" placeholder="John" id="username">
+			  </label>
+
+	  			<br>
+	  
+				<div  style="padding: 6px 10%">
+					 <button class="button button-full button-positive" onclick="userInfo()">Submit</button>
+				</div>
+
+				<br><br>
+
+			</div>
+
+			<div class="card">
+			  <div class="item item-text-wrap" id="infobox" style="text-align: center;"></div>
+			</div>
+
+		</div>
+	</div>
+
+
+	<div class="bar bar-footer bar-calm">
+		<h1 class="title">Footer</h1>
+	</div>
+<script type="text/javascript" src="js/jquery-1.10.2.js"></script>
+
+<script type="text/javascript">
+	
+	function userInfo(){
+
+	    var user = $("#username").val();
+
+	    //alert(username);
+	    //exit;
+
+
+	    jQuery.ajax({
+
+	        type: "POST", //Form or Tag Method to pass to server (POST or GET)
+	        url: "output/info.php", // Server URL
+	        dataType: "text", //Text, html, json
+	        data:{
+	            username:user
+	        }, // The var to pass to the server
+	        success: function(output){
+
+	            //alert(output);
+
+	            $("#infobox").html(output)
+
+
+	        },
+	        error: function(xhr, ajaxOption, throwError){
+
+	        }
+
+
+	    });
+
+
+
+}
+
+</script>
+
+</body>
+</html>
